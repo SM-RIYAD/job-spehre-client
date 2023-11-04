@@ -25,9 +25,9 @@ const Header = () => {
 
       <li className={`${user ? "pt-10" : "pt-5"} `}>
         <Link
-          className={`${pathname === "/addproduct" ? "active-link" : ""}`}
+          className={`${pathname === "/alljobs" ? "active-link" : ""}`}
           style={{ style: "" }}
-          to="/addproduct"
+          to="/alljobs"
         >
           All Jobs
         </Link>
@@ -35,14 +35,44 @@ const Header = () => {
 
       <li className={`${user ? "pt-10" : "pt-5"} `}>
         <Link
-          className={`${pathname === "/mycart" ? "active-link" : ""}`}
-          to="/mycart"
+          className={`${pathname === "/blogs" ? "active-link" : ""}`}
+          to="/blogs"
         >
-          My Cart
+          Blogs
         </Link>
       </li>
+      {user?.displayName && (
+        <li className={`${user ? "pt-10" : "pt-5"} `}>
+          <Link
+            className={`${pathname === "/myjobs" ? "active-link" : ""}`}
+            to="/myjobs"
+          >
+            My jobs
+          </Link>
+        </li>
+      )}
+        {user?.displayName && (
+        <li className={`${user ? "pt-10" : "pt-5"} `}>
+          <Link
+            className={`${pathname === "/addajob" ? "active-link" : ""}`}
+            to="/addajob"
+          >
+            Add a job
+          </Link>
+        </li>
+      )}
+        {user?.displayName && (
+        <li className={`${user ? "pt-10" : "pt-5"} `}>
+          <Link
+            className={`${pathname === "/appliedjobs" ? "active-link" : ""}`}
+            to="/appliedjobs"
+          >
+            Applied jobs
+          </Link>
+        </li>
+      )}
 
-      <li className={`${user ? "pt-10" : "pt-5"} `}>
+      {/* <li className={`${user ? "pt-10" : "pt-5"} `}>
         {user?.displayName ? (
           <p onClick={handleLogout} className="border-0">
             Logout
@@ -55,24 +85,28 @@ const Header = () => {
             <p className="border-0">Log in</p>
           </Link>
         )}
-      </li>
+      </li> */}
     </>
   );
 
   const endlinks = (
     <>
-
       <li>
-        {user && (
+        {user ? (
           <div className="  lg:ms-0  flex items-center flex-col mt-6 gap-2  ">
-            <div className="rounded-full ">
-              <div className="w-7  rounded-full ">
+            <div className="rounded-full tooltip" data-tip={user?.displayName}  >
+              <div className="w-12  rounded-full  ">
                 <img className="rounded-full" src={user?.photoURL} />
               </div>
             </div>
-            <p className="font-bold">{user.displayName}</p>
+            {/* <p className="font-bold  ">{user.displayName}</p> */}
           </div>
-        )}
+        ) :  <Link
+        className={`${pathname === "/login" ? "active-link" : ""}`}
+        to="/login"
+      >
+        <p className="border-0">Log in</p>
+      </Link> }
       </li>
     </>
   );
@@ -109,11 +143,7 @@ const Header = () => {
             <div className="w-52  pb-5">
               <img
                 className="w-full "
-                src={` ${
-               
-                    "https://i.ibb.co/RHwMJBk/electrologo-removebg-preview.png"
-                   
-                }`}
+                src={` ${"https://i.ibb.co/RHwMJBk/electrologo-removebg-preview.png"}`}
               />
             </div>
           </a>

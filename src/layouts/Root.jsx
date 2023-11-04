@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Header from "../shared/Header";
+import "./Root.css"
 
 
 
