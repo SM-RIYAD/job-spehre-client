@@ -1,7 +1,16 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../../../providers/AuthProvider";
 const JobCards = ({ job }) => {
-  const {
+    const { user } = useContext(AuthContext);
+    
+    console.log("photo url", user?.photoURL);
+    const errorToast = (protectederror) =>
+    toast.error(protectederror, { position: "bottom-center" });
+  const {_id,
     jobPhoto,
     JobTitle,
     UserName,
@@ -10,10 +19,29 @@ const JobCards = ({ job }) => {
     SalaryRange,
     JobDescription,ApplicationDeadline,JobPostingDate,JobApplicantsNumber
   } = job;
+  const handleErrorToast =()=>{
+    if(user?.displayName )
+
+   { 
+    return;}
+   else {
+    // alert("You have to be logged in to see the job details!")
+    Swal.fire({
+        title: 'Private Route!',
+        text: "You have to be logged in to see Details",
+        icon: 'warning',
+       
+        
+    })
+   }
+
+  }
   return (
     <div>
+     
       <div className=" p-5 hover:shadow-xl hover:border hover:rounded hover:bg-blue-100 flex lg:flex-row lg:space-y-0 space-y-5 flex-col">
         <div className="lg:w-1/3 lg:flex flex-col  ">
+        
           <p className="text-2xl"> {JobTitle}</p>
           <button className="text-sm  h-[30px] text-purple-500 w-[80px] border-purple-500 border  rounded">
       
@@ -28,7 +56,7 @@ const JobCards = ({ job }) => {
           <p className="text-gray-400 "> Apply before <span className="text-red-400">{ApplicationDeadline} </span>  </p>
 
           <p className="text-gray-400"> Applicants : {JobApplicantsNumber} </p>
-          <p className="text-gray-400 "> Posted By {UserName} on <span className="text-green-400">{JobPostingDate} </span></p>
+          <p className="text-gray-400 "> Posted By <span className="font-bold" > <i>{UserName} </i> </span>  on <span className="text-green-400">{JobPostingDate} </span></p>
          
         </div>
 
@@ -38,11 +66,14 @@ const JobCards = ({ job }) => {
             <p className="text-gray-400"> $ {SalaryRange}</p>
 
             </div>
-          <div>
-            <button className="btn-success  btn my-3 btn-outline">
+          <div> 
+            <Link to={`jobdetails/${_id}`}> 
+            <button onClick={handleErrorToast} className="btn-success  btn my-3 btn-outline">
               {" "}
               Job details
             </button>
+            </Link>
+        
           </div>
         </div>
       </div>
