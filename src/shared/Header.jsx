@@ -94,10 +94,13 @@ const Header = () => {
       <li>
         {user ? (
           <div className="  lg:ms-0  flex items-center flex-col mt-6 gap-2  ">
-            <div className="rounded-full tooltip" data-tip={user?.displayName}  >
-              <div className="w-12  rounded-full  ">
+            <div className="rounded-full  tooltip flex gap-5"   >
+              <div className="w-12 rounded-full  tooltip"  data-tip={user?.displayName}   >
                 <img className="rounded-full" src={user?.photoURL} />
               </div>
+              <btn  onClick={handleLogout} className="border-0 btn btn-error btn-outline">
+            Logout
+          </btn>
             </div>
             {/* <p className="font-bold  ">{user.displayName}</p> */}
           </div>

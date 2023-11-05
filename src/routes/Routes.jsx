@@ -8,6 +8,7 @@ import Blogs from "../pages/Blogs/Blogs";
 import Addajob from "../pages/Addajob/Addajob";
 import AppliedJobs from "../pages/AppliedJobs/AppliedJobs";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addajob', 
-                element: <Addajob/>, 
+                element:  <PrivateRoute><Addajob/> </PrivateRoute>, 
                 
             },
             {
