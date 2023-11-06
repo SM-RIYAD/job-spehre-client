@@ -22,7 +22,7 @@ const JobDetails = () => {
     axiosSecure.get(`specificjob/${id}`).then((result) => {
       setDtailedjob(result.data);
     });
-  }, [axiosSecure, id]);
+  }, [axiosSecure, id,detailedjob]);
   const {
     companyLogo,
 
@@ -135,7 +135,21 @@ const JobDetails = () => {
       console.error("Error:", error);
       // Handle errors if any
     });
-
+    axiosSecure.get(`updateapplicantnumber/${id}`).then((response) => {
+      console.log(response.data);
+      if ( response.data.modifiedCount > 0) {
+        Swal.fire({
+          title: "Success!",
+          text: "Successfully incremented job",
+          icon: "success",
+          confirmButtonText: "Cool"
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      // Handle errors if any
+    });
   }
   return (
     <div>

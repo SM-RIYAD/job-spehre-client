@@ -18,20 +18,53 @@ const Alljobs = () => {
 
   console.log("this is job array", jobs);
 
-  const {_id,
-    jobPhoto,
-    JobTitle,
-    UserName,
-    useremail,
-    JobCategory,
-    SalaryRange,
-    JobDescription,ApplicationDeadline,JobPostingDate,JobApplicantsNumber
-  } = showjobs;
+//   const {_id,
+//     jobPhoto,
+//     JobTitle,
+//     UserName,
+//     useremail,
+//     JobCategory,
+//     SalaryRange,
+//     JobDescription,ApplicationDeadline,JobPostingDate,JobApplicantsNumber
+//   } = showjobs;
+
+  const handleSearch = (e)=>{
+    e.preventDefault();
+    const form = e.target;
+    const filter=form.search.value.toUpperCase();
+
+    console.log("search: ",filter)
+    if(filter.length===0){
+
+        setShowJobs(jobs);
+    }
+
+   else{
+
+    const newjobs = jobs.filter((job) => job.JobTitle.toUpperCase() === filter);
+    setShowJobs(newjobs);
+   } 
+  }
   return (
     <div>
       <AlljobBanner></AlljobBanner>
 
       <div className="mx-auto max-w-6xl">
+
+        <div className="flex justify-center my-10">
+       <form onSubmit={handleSearch}>
+       <input
+                    type="text"
+                    name="search"
+                    placeholder="Search a job"
+                    className="input input-bordered"
+                  
+                  />  
+                  <button className="btn bg-green-600 border-none text-white btn-warning">Search</button>
+        </form>
+
+
+        </div>
         <div className="lg:block hidden">
           <div className="overflow-x-auto">
             <table className="table">

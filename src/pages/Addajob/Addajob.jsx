@@ -51,7 +51,7 @@ console.log("user in add product ", user);
   
     const ApplicationDeadline=startDate;
 
-    const JobApplicantsNumber=form.ApplicantsNumber.value;
+    const JobApplicantsNumber=parseInt(form.ApplicantsNumber.value);
     
    
       // errorToast("Rating should be less than 5");
