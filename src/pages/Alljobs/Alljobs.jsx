@@ -4,6 +4,8 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 
 import "./alljobcss/job.css";
+import Responsivetable from "./Responsivetable";
+import { Link } from "react-router-dom";
 const Alljobs = () => {
   const axiosSecure = useAxiosSecure();
   const [jobs, setJobs] = useState([]);
@@ -18,60 +20,55 @@ const Alljobs = () => {
 
   console.log("this is job array", jobs);
 
-//   const {_id,
-//     jobPhoto,
-//     JobTitle,
-//     UserName,
-//     useremail,
-//     JobCategory,
-//     SalaryRange,
-//     JobDescription,ApplicationDeadline,JobPostingDate,JobApplicantsNumber
-//   } = showjobs;
+  //   const {_id,
+  //     jobPhoto,
+  //     JobTitle,
+  //     UserName,
+  //     useremail,
+  //     JobCategory,
+  //     SalaryRange,
+  //     JobDescription,ApplicationDeadline,JobPostingDate,JobApplicantsNumber
+  //   } = showjobs;
 
-  const handleSearch = (e)=>{
+  const handleSearch = (e) => {
     e.preventDefault();
     const form = e.target;
-    const filter=form.search.value.toUpperCase();
+    const filter = form.search.value.toUpperCase();
 
-    console.log("search: ",filter)
-    if(filter.length===0){
-
-        setShowJobs(jobs);
+    console.log("search: ", filter);
+    if (filter.length === 0) {
+      setShowJobs(jobs);
+    } else {
+      const newjobs = jobs.filter(
+        (job) => job.JobTitle.toUpperCase() === filter
+      );
+      setShowJobs(newjobs);
     }
-
-   else{
-
-    const newjobs = jobs.filter((job) => job.JobTitle.toUpperCase() === filter);
-    setShowJobs(newjobs);
-   } 
-  }
+  };
   return (
     <div>
       <AlljobBanner></AlljobBanner>
 
       <div className="mx-auto max-w-6xl">
-
         <div className="flex justify-center my-10">
-       <form onSubmit={handleSearch}>
-       <input
-                    type="text"
-                    name="search"
-                    placeholder="Search a job"
-                    className="input input-bordered"
-                  
-                  />  
-                  <button className="btn bg-green-600 border-none text-white btn-warning">Search</button>
-        </form>
-
-
+          <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              name="search"
+              placeholder="Search a job"
+              className="input input-bordered"
+            />
+            <button className="btn bg-green-600 border-none text-white btn-warning">
+              Search
+            </button>
+          </form>
         </div>
         <div className="lg:block hidden">
           <div className="overflow-x-auto">
             <table className="table">
-        
               <thead>
                 <tr>
-                  <th>Name Who posted</th>
+                  <th> Posted by</th>
                   <th>Job Title</th>
                   <th>Job Posting Date</th>
                   <th>Application Deadline </th>
@@ -80,32 +77,37 @@ const Alljobs = () => {
                 </tr>
               </thead>
               <tbody>
-             
-                {
-showjobs.map((job,idx)=>  <tr key={idx}  >   <td>{job?.UserName}</td>
-<td>{job?.JobTitle}</td>
-<td>{job.JobPostingDate}</td>
-<td>{job.ApplicationDeadline}</td>
-<td>${job.SalaryRange}</td>
-<th>
-  <button className="btn bg-green-600 text-white btn-xs">details</button>
-</th>
-
-
-
-
-</tr>)
-
-
-                }
-
-
-
-
+                {showjobs.map((job, idx) => (
+                  <tr key={idx}>
+                    {" "}
+                    <td>{job?.UserName}</td>
+                    <td>{job?.JobTitle}</td>
+                    <td>{job.JobPostingDate}</td>
+                    <td>{job.ApplicationDeadline}</td>
+                    <td>${job.SalaryRange}</td>
+                    <th>
+                        <Link to={`/jobdetails/${job._id}`}>
+                        <button className="btn bg-green-600 text-white btn-xs">
+                        details
+                      </button>
+                        </Link>
+                      
+                    </th>
+                  </tr>
+                ))}
               </tbody>
-            
             </table>
           </div>
+        </div>
+
+        <div className=" lg:hidden  ">
+
+        {showjobs.map((job, idx) => <  Responsivetable key={idx} job={job}/>)
+              
+
+    
+    }
+          
         </div>
       </div>
     </div>
