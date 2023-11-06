@@ -37,7 +37,8 @@ console.log("user in add product ", user);
     const JobTitle=form.jobname.value;
   
     const UserName=form.username.value;
-   
+    const CompanyName=form.companyname.value;
+    const Location=form.location.value;
     const useremail=user?.email;
  
     const JobCategory=selectedOption;
@@ -72,7 +73,8 @@ console.log("user in add product ", user);
          useremail,
      
          JobCategory,
-       
+         CompanyName,
+          Location,
          SalaryRange,
        
         JobDescription,
@@ -164,23 +166,7 @@ console.log("user in add product ", user);
                     <option value="Hybrid">Hybrid</option>
                   </select>
                 </div>
-                <div className="form-control ">
-                  <label className="label">
-                    <span className="label-text text-black">
-                      Job description
-                    </span>
-                  </label>
-
-                  <textarea
-                    className="input input-bordered "
-                    required
-                    placeholder="Enter Job Description"
-                    name="jobdescription"
-                    id=""
-                    cols="30"
-                    rows="10"
-                  ></textarea>
-                </div>
+               
                 <div className="form-control ">
                   <label className="label">
                     <span className="label-text text-black">
@@ -254,17 +240,11 @@ console.log("user in add product ", user);
                   <label className="label">
                     <span className="label-text text-black">Posting Date</span>
                   </label>
-                  {/* <input
-           type="date"
-           name="postingdate"
-           placeholder="enter the date of posting"
-           className="input input-bordered"
-           required
-         />  */}
+              
 
                   <DatePicker
                     className="input postingDate input-bordered deadline w-full"
-                    selected={startDate}
+                    selected={postingStartDate}
                     onChange={(date) => setPostingStartDate(date)}
                   />
                 </div>
@@ -280,6 +260,49 @@ console.log("user in add product ", user);
                     className="input input-bordered deadline w-full"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
+                  />
+                </div>
+                <div className="form-control  ">
+                  <label className="label">
+                    <span className="label-text text-black">
+                      Job description
+                    </span>
+                  </label>
+
+                  <textarea
+                    className="input input-bordered "
+                    required
+                    placeholder="Enter Job Description"
+                    name="jobdescription"
+                    id=""
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-black">Location</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="location"
+                   
+                    placeholder="Enter company location"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-black">Company Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="companyname"
+                 
+                    placeholder="enter company Name"
+                    className="input input-bordered"
+                    required
                   />
                 </div>
               </div>
