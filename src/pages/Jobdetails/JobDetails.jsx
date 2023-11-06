@@ -69,7 +69,7 @@ const JobDetails = () => {
         confirmButtonText: "ok",
       });
     } else {
-      console.log(user.email," ",useremail)
+      console.log(user.email, " ", useremail);
       if (user.email === useremail) {
         Swal.fire({
           title: "Can't apply!",
@@ -78,10 +78,65 @@ const JobDetails = () => {
           confirmButtonText: "ok",
         });
       } else {
-        return;
+        document.getElementById("my_modal_1").showModal();
       }
     }
   };
+
+  const handleApplyJobfromModal=(e)=>{
+
+    e.preventDefault();
+    const form = e.target;
+
+    const applicantName=form.apllicantname.value;
+    const applicantEmail=form.applicantEmail.value;
+    const ResumeURl=form.Resumeurl.value;
+    const newjob = {
+      companyLogo,
+      ResumeURl,applicantEmail,applicantName,
+      jobPhoto,
+    
+      JobTitle,
+   
+     UserName,
+    
+      useremail,
+  
+      JobCategory,
+      CompanyName,
+       Location,
+      SalaryRange,
+    
+     JobDescription,
+     
+   JobPostingDate,
+   
+      ApplicationDeadline,
+ 
+      JobApplicantsNumber,
+   };
+    axiosSecure.post("applyjob", newjob, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => {
+      console.log(response.data);
+      if (response.data.insertedId) {
+        Swal.fire({
+          title: "Success!",
+          text: "Applied to the job Successfully",
+          icon: "success",
+          confirmButtonText: "Cool"
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      // Handle errors if any
+    });
+
+  }
   return (
     <div>
       <JobdetailsBanner JobTitle={JobTitle} jobPhoto={jobPhoto} />
@@ -154,6 +209,77 @@ const JobDetails = () => {
                 >
                   Apply
                 </button>
+                <dialog id="my_modal_1" className="modal">
+                  <div className="modal-box">
+                  <form method="dialog">
+      {/* if there is a button in form, it will close the modal */}
+      <button className="btn  btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+                  <form onSubmit={handleApplyJobfromModal} className="card-body  ">
+                  <div className="grid grid-cols-1 gap-2">
+                <div className="form-control">
+           
+                  <label className="label">
+                    <span className="label-text text-black">Applicant Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="apllicantname"
+                    value={user?.displayName}
+                    placeholder="User Name"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-black">Applicant Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="applicantEmail"
+                    value={user?.email}
+                    placeholder="User Name"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+
+             
+
+        
+                <div className="form-control ">
+                  <label className="label">
+                    <span className="label-text text-black">
+                      Resume Url
+                    </span>
+                  </label>
+
+                  <input
+                    type="text"
+                    name="Resumeurl"
+                    placeholder="enter your resume url"
+                    className="input input-bordered"
+                    required
+                  />  <input
+                  type="submit"
+            
+                  value="Submit"
+                  className="btn bg-green-500 mt-5 text-white border-none w-full  btn-primary"
+                /><div className="modal-action">
+               
+                </div>
+              
+                </div>
+
+             
+                
+              
+              </div>
+              </form>
+                    
+                  </div>
+                </dialog>
               </div>
             </div>
           </div>

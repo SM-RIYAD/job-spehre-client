@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import BannerAddajob from "./BannerAddajob";
-import axios from "axios";
+
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 const Addajob = () => {
   const axiosSecure = useAxiosSecure();
