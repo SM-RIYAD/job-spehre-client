@@ -24,12 +24,7 @@ console.log("user in add product ", user);
   const handleAddProduct = (e) => {
     e.preventDefault();
     const form = e.target;
-    // const name = form.name.value;
-
-    // const photo = form.photo.value;
-    // const date = form.date.value;
-    // const price = form.price.value;
-    // const rating = form.rating.value;
+    
     const companyLogo=form.companylogo.value;
    
     const jobPhoto=form.photourl.value;
@@ -47,9 +42,9 @@ console.log("user in add product ", user);
    
     const JobDescription=form.jobdescription.value;
     
-   const  JobPostingDate=postingStartDate;
+   const  JobPostingDate=form.postingdate.value;
   
-    const ApplicationDeadline=startDate;
+    const ApplicationDeadline=form.deadlinedate.value;
 
     const JobApplicantsNumber=parseInt(form.ApplicantsNumber.value);
     
@@ -242,11 +237,14 @@ console.log("user in add product ", user);
                   </label>
               
 
-                  <DatePicker
-                    className="input postingDate input-bordered deadline w-full"
-                    selected={postingStartDate}
-                    onChange={(date) => setPostingStartDate(date)}
-                  />
+                  <input
+                  type="date"
+                  name="postingdate"
+                  placeholder="enter the date of posting"
+                  className="input input-bordered"
+              
+                  required
+                />
                 </div>
 
                 <div className="form-control">
@@ -256,11 +254,14 @@ console.log("user in add product ", user);
                       Application Deadline
                     </span>
                   </label>
-                  <DatePicker
-                    className="input input-bordered deadline w-full"
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                  />
+                  <input
+                  type="date"
+                  name="deadlinedate"
+                  placeholder="enter the date of posting"
+                  className="input input-bordered"
+             
+                  required
+                />
                 </div>
                 <div className="form-control  ">
                   <label className="label">
