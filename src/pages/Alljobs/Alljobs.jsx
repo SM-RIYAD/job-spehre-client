@@ -10,11 +10,13 @@ const Alljobs = () => {
   const axiosSecure = useAxiosSecure();
   const [jobs, setJobs] = useState([]);
   const [showjobs, setShowJobs] = useState([]);
-
+  const [loading, setloading] = useState(false);
   useEffect(() => {
+    setloading(true);
     axiosSecure.get("alljobs").then((result) => {
       setJobs(result.data);
       setShowJobs(result.data);
+      setloading(false);
     });
   }, [axiosSecure]);
 
@@ -63,6 +65,9 @@ const Alljobs = () => {
             </button>
           </form>
         </div>
+      {loading? <div className="w-full flex justify-center">
+            <span className="loading loading-spinner loading-xl"></span>
+          </div>:   <div>
         <div className="lg:block hidden">
           <div className="overflow-x-auto">
             <table className="table">
@@ -109,6 +114,10 @@ const Alljobs = () => {
     }
           
         </div>
+        </div> } 
+          
+        
+       
       </div>
     </div>
   );

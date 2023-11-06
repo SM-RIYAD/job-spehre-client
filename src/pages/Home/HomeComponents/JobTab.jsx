@@ -7,6 +7,7 @@ import JobCards from "./JobCards";
 const JobTab = () => {
   const axiosSecure = useAxiosSecure();
   const [jobs, setJobs] = useState([]);
+  const [loading, setloading] = useState(false);
   const [showjobs, setShowJobs] = useState([]);
   // useEffect(() => {
   //     fetch("https://brand-website-server.vercel.app/brands")
@@ -18,10 +19,11 @@ const JobTab = () => {
     // fetch("https://brand-website-server.vercel.app/brands")
     //   .then((result) => result.json())
     //   .then((data) => setBrands(data));
-
+    setloading(true);
     axiosSecure.get("alljobs").then((result) => {
       setJobs(result.data);
       setShowJobs(result.data);
+      setloading(false);
     });
   }, [axiosSecure]);
 
@@ -90,12 +92,18 @@ const JobTab = () => {
           <h2>hybrid jobs</h2>
         </TabPanel> */}
       </Tabs>
-
-      <div className="grid mt-10  gap-15 grid-cols-1">
+{loading? <div className="w-full flex justify-center">
+            <span className="loading loading-spinner loading-xl"></span>
+          </div>:     <div className="grid mt-10  gap-15 grid-cols-1">
         {showjobs.map((job, idx) => (
           <JobCards job={job} key={idx} />
         ))}
       </div>
+          
+          
+          
+          }
+  
     </div>
   );
 };
