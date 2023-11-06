@@ -2,6 +2,7 @@ import React,{useEffect,useState,useContext} from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { AuthContext } from '../../providers/AuthProvider';
 import MyjobBanner from './MyjobBanner';
+import MyjobResponsiveTable from './MyjobResponsiveTable';
 
 const Myjobs = () => {
 
@@ -27,6 +28,7 @@ const Myjobs = () => {
     return (
         <div>
            <MyjobBanner></MyjobBanner>
+           
             <div className=" max-w-6xl mx-auto" >
             <div className="lg:block hidden">
           <div className="overflow-x-auto">
@@ -67,6 +69,16 @@ const Myjobs = () => {
             </table>
           </div>
         </div>
+        <div className=" lg:hidden  ">
+
+{jobs.map((job, idx) => <MyjobResponsiveTable key={idx} job={job}/>)
+
+      
+
+
+}
+  
+</div>
             </div>
 
 
