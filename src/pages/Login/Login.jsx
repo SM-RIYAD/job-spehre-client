@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../providers/AuthProvider";
+import PageTitle from "../../Components/PageTitle";
 
 // import AuthProvider, { AuthContext } from "../../providers/AuthProvider";
 // import Header from "../Home/Header/Header";
@@ -66,8 +67,8 @@ const { signIn,googleSignIn,theme }=useContext(AuthContext);
 
   }
   return (
-    <div data-theme={`${theme}`}  className="">
-   
+    <div  className="">
+   <PageTitle title={"Login"}></PageTitle>
       <ToastContainer />
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">

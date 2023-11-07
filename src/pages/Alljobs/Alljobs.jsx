@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import "./alljobcss/job.css";
 import Responsivetable from "./Responsivetable";
 import { Link } from "react-router-dom";
+import PageTitle from "../../Components/PageTitle";
 const Alljobs = () => {
   const axiosSecure = useAxiosSecure();
   const [jobs, setJobs] = useState([]);
@@ -49,6 +50,7 @@ const Alljobs = () => {
   };
   return (
     <div>
+      <PageTitle title={"All jobs"}></PageTitle>
       <AlljobBanner></AlljobBanner>
 
       <div className="mx-auto max-w-6xl">

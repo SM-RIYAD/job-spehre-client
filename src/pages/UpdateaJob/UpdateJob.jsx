@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import moment from 'moment';
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import PageTitle from '../../Components/PageTitle';
 const UpdateJob = () => {
     const { id } = useParams();
    
@@ -140,7 +141,7 @@ console.log("this job is for updating:",detailedjob);
     }
     return (<div>
 
-
+<PageTitle title={"Update Job"}></PageTitle>
         <UpdateJobBanner></UpdateJobBanner>
         <div className="lg:max-w-6xl mx-auto">
         <div className="min-h-screen px-5">

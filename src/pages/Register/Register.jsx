@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../providers/AuthProvider";
+import PageTitle from "../../Components/PageTitle";
 
 
 // import { AuthContext } from "../providers/AuthProvider";
@@ -63,7 +64,7 @@ const  { createUser, updateUser,logOut } =useContext(AuthContext)
   };
   return (
     <div>
-
+<PageTitle title={"Register"} ></PageTitle>
       <ToastContainer />
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">

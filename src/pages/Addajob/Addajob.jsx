@@ -11,6 +11,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import BannerAddajob from "./BannerAddajob";
 
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import PageTitle from "../../Components/PageTitle";
 const Addajob = () => {
   const axiosSecure = useAxiosSecure();
   const { user,  } = useContext(AuthContext);
@@ -125,6 +126,7 @@ console.log("user in add product ", user);
   };
   return (
     <div>
+      <PageTitle title={"Add a job"}></PageTitle>
       <BannerAddajob />
 
       <div className="lg:max-w-6xl mx-auto">

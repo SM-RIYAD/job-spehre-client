@@ -6,6 +6,7 @@ import AppliedJobsBanner from "./AppliedJobsBanner";
 import { Link } from "react-router-dom";
 import AppliedJobResponsivetable from "./AppliedJobResponsivetable";
 import { usePDF } from 'react-to-pdf';
+import PageTitle from "../../Components/PageTitle";
 const AppliedJobs = () => {
   const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
   const [selectedOption, setSelectedOption] = useState("");
@@ -50,6 +51,7 @@ if(selectedOption==="All Jobs"){
   console.log(" my applied jobs", jobstoshow);
   return (
     <div>
+      <PageTitle title={"Applied Jobs"}></PageTitle>
       <AppliedJobsBanner></AppliedJobsBanner>
       <div className="6xl mx-auto">
         <div className="flex justify-center my-10">

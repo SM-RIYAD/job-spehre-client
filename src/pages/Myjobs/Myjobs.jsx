@@ -5,6 +5,7 @@ import MyjobBanner from "./MyjobBanner";
 import MyjobResponsiveTable from "./MyjobResponsiveTable";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import PageTitle from "../../Components/PageTitle";
 const Myjobs = () => {
   const { user } = useContext(AuthContext);
   // const [bookings, setBookings] = useState([]);
@@ -67,6 +68,7 @@ const Myjobs = () => {
   }
   return (
     <div>
+      <PageTitle title={"My jobs"}></PageTitle>
       <MyjobBanner></MyjobBanner>
 
       <div className=" max-w-6xl mx-auto">

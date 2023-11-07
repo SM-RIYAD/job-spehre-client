@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import JobdetailsBanner from "./jobdetailsBanner";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import PageTitle from "../../Components/PageTitle";
 const JobDetails = () => {
   const { user } = useContext(AuthContext);
   const formatDate = (dateString) => {
@@ -153,6 +154,7 @@ const JobDetails = () => {
   }
   return (
     <div>
+      <PageTitle title={"Job Details"}></PageTitle>
       <JobdetailsBanner JobTitle={JobTitle} jobPhoto={jobPhoto} />
       <div className="max-w-6xl mx-auto">
         <div className="flex lg:flex-row flex-col">
