@@ -1,9 +1,12 @@
 import React from 'react';
+import AppliedJobsBanner from './AppliedJobsBanner';
 
 const AppliedJobs = () => {
     return (
         <div>
-            this is applied jobs
+
+            <AppliedJobsBanner></AppliedJobsBanner>
+           
         </div>
     );
 };
