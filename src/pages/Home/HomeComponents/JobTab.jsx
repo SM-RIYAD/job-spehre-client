@@ -9,16 +9,10 @@ const JobTab = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setloading] = useState(false);
   const [showjobs, setShowJobs] = useState([]);
-  // useEffect(() => {
-  //     fetch("https://brand-website-server.vercel.app/brands")
-  //       .then((result) => result.json())
-  //       .then((data) => setBrands(data));
-  //   }, []);
+
 
   useEffect(() => {
-    // fetch("https://brand-website-server.vercel.app/brands")
-    //   .then((result) => result.json())
-    //   .then((data) => setBrands(data));
+
     setloading(true);
     axiosSecure.get("alljobs").then((result) => {
       setJobs(result.data);
@@ -63,7 +57,7 @@ const JobTab = () => {
           </Tab>
           <Tab
             onClick={() => {
-              handleClickTab("On Site");
+              handleClickTab("OnSite");
             }}
           >
             Onsite

@@ -13,7 +13,7 @@ const Myjobs = () => {
   const [jobstoshow, setJobstoshow] = useState([]);
   const axiosSecure = useAxiosSecure();
 
-  // const url = `https://car-doctor-server-topaz-one.vercel.app/bookings?email=${user?.email}`;
+ 
   const url = `/myjobs?email=${user?.email}`;
 
   useEffect(() => {
@@ -23,11 +23,11 @@ const Myjobs = () => {
     setloading(true);
     axiosSecure.get(url).then((res) => {
       setJobs(res.data);
-
+      setJobstoshow(res.data)
       setloading(false);
     });
   }, [url, axiosSecure]);
-  console.log(" my jobs", jobs);
+  console.log(" my  jobs", jobs);
 
   const handleDelete =(id)=>{
     Swal.fire({
