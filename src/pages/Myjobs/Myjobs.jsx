@@ -4,12 +4,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 import MyjobBanner from "./MyjobBanner";
 import MyjobResponsiveTable from "./MyjobResponsiveTable";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const Myjobs = () => {
   const { user } = useContext(AuthContext);
   // const [bookings, setBookings] = useState([]);
   const [loading, setloading] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const [jobstoshow, setJobstoshow] = useState([]);
   const axiosSecure = useAxiosSecure();
 
   // const url = `https://car-doctor-server-topaz-one.vercel.app/bookings?email=${user?.email}`;
@@ -27,6 +28,43 @@ const Myjobs = () => {
     });
   }, [url, axiosSecure]);
   console.log(" my jobs", jobs);
+
+  const handleDelete =(id)=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+      if (result.isConfirmed) {
+
+
+          fetch(`http://localhost:5000/deletejob/${id}`, {
+              method: 'DELETE'
+          })
+              .then(res => res.json())
+              .then(data => {
+                  console.log(data);
+                  if (data.deletedCount > 0) {
+                      Swal.fire(
+                          'Deleted!',
+                          'Job has been deleted.',
+                          'success'
+                      )
+                      const remaining = jobs.filter(job => job._id !== id);
+                      setJobs(remaining);
+                  }
+              })
+         
+      }
+  })
+
+
+
+  }
   return (
     <div>
       <MyjobBanner></MyjobBanner>
@@ -65,7 +103,7 @@ const Myjobs = () => {
                 </button>
               </Link>
 
-              <button className="btn bg-red-700 text-white btn-xs">
+              <button onClick={()=> handleDelete(job._id)} className="btn bg-red-700 text-white btn-xs">
                 Delete
               </button>
             </th>
