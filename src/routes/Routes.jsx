@@ -11,6 +11,7 @@ import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import JobDetails from "../pages/Jobdetails/JobDetails";
 import UpdateJob from "../pages/UpdateaJob/UpdateJob";
+import Errorpage from "../Components/ErrorPage/Errorpage";
 
 
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Root/>,
+        errorElement:<Errorpage/>,
  
         children: [
             {
@@ -39,7 +41,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myjobs', 
-                element: <Myjobs/>, 
+                element:  <PrivateRoute><Myjobs/> </PrivateRoute>, 
+            
                 
             },
             {
@@ -59,7 +62,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/appliedjobs', 
-                element: <AppliedJobs/>, 
+                element: <PrivateRoute><AppliedJobs/></PrivateRoute>  
                 
             },
             {

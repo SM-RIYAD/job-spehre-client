@@ -1,10 +1,12 @@
 import { createContext, useEffect, useState } from 'react';
 import { GoogleAuthProvider } from "firebase/auth";
-
+// import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { getAuth, updateProfile } from "firebase/auth";
 
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../firebase/firebase.config';
+import useAxiosSecure from '../hooks/useAxiosSecure';
+import axios from 'axios';
 
 export const AuthContext = createContext(null);
 
@@ -12,7 +14,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
     const [theme,setTheme]=useState("light");
-   
+    const axiosSecure = useAxiosSecure();
     const [loading, setLoading] = useState(true);
     const createUser = (email, password) => {
         setLoading(true);
@@ -50,22 +52,39 @@ return  signInWithPopup(auth,provider)
 
 
     }
-
+    const authInfo = { 
+        user,createUser,
+        logOut,signIn,theme,googleSignIn,loading,updateUser,setTheme
+    }
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            
             console.log('user in the auth state changed', currentUser);
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
             setUser(currentUser);
             setLoading(false);
+              // if user exists then issue a token
+              if (currentUser) {
+                axiosSecure.post('/jwt', loggedUser,  )
+                    .then(res => {
+                        console.log('token response', res.data);
+                    })
+            }
+            else {
+                axiosSecure.post('/logout', loggedUser, )
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                return;
+            }
            
         });
         return () => {
             unSubscribe();
         }
     }, []);
-    const authInfo = { 
-        user,createUser,
-        logOut,signIn,theme,googleSignIn,loading,updateUser,setTheme
-    }
+  
     return (
         <AuthContext.Provider value={authInfo}>
         {children}
