@@ -33,7 +33,7 @@ const JobTab = () => {
     <div className="max-w-6xl mx-auto">
       <p className="text-center font-bold my-10 text-4xl">LATEST JOBS </p>
       <Tabs>
-        <TabList className="flex justify-center  text-blue-500 font-bold">
+        <TabList className="flex flex-wrap justify-center  text-blue-500 font-bold">
           <Tab
             onClick={() => {
               setShowJobs(jobs);

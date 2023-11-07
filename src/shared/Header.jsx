@@ -142,11 +142,11 @@ const Header = () => {
               {endlinks}
             </ul>
           </div>
-          <a className="mt-10     ">
-            <div className="w-52  pb-5">
+          <a className="     ">
+            <div className=" lg:w-2/3 w-[200px] ">
               <img
-                className="w-full "
-                src={` ${"https://i.ibb.co/RHwMJBk/electrologo-removebg-preview.png"}`}
+                className=" "
+                src={` ${"https://i.ibb.co/sJcZxsz/jobspherenew-removebg-preview.png"}`}
               />
             </div>
           </a>
