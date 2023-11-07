@@ -5,8 +5,9 @@ import { AuthContext } from "../../providers/AuthProvider";
 import AppliedJobsBanner from "./AppliedJobsBanner";
 import { Link } from "react-router-dom";
 import AppliedJobResponsivetable from "./AppliedJobResponsivetable";
-
+import { usePDF } from 'react-to-pdf';
 const AppliedJobs = () => {
+  const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
   const [selectedOption, setSelectedOption] = useState("");
   const [jobstoshow, setJobstoshow] = useState([]);
   const { user } = useContext(AuthContext);
@@ -63,13 +64,16 @@ if(selectedOption==="All Jobs"){
                     <option value="Part Time">Part Time</option>
                     <option value="Hybrid">Hybrid</option>
           </select>
+          <button className="btn btn-primary" onClick={() => toPDF()}>Download Summary</button>
         </div>
-
+       
         {loading ? (
           <div className="w-full flex justify-center">
             <span className="loading loading-spinner loading-xl"></span>
           </div>
         ) : (
+
+          <div ref={targetRef}>
           <div className="max-w-6xl mx-auto">
             <div className="lg:block hidden">
               <div className="overflow-x-auto">
@@ -110,6 +114,8 @@ if(selectedOption==="All Jobs"){
               ))}
             </div>
           </div>
+          </div>
+          
         )}
       </div>
     </div>

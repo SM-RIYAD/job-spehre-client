@@ -116,7 +116,7 @@ console.log("this job is for updating:",detailedjob);
             JobApplicantsNumber,
           
     } 
-        axiosSecure.put(`/updatejob/${id}` , newjobtoUpdate, {
+        axiosSecure.put(`https://job-sphere-server.vercel.app/updatejob/${id}` , newjobtoUpdate, {
             headers: {
               "Content-Type": "application/json"
             }
