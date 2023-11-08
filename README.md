@@ -1,8 +1,21 @@
-# React + Vite
+<h1>ElectroSphere </h>
+Live website link : "https://job-sphere.web.app"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+About Job Sphere :
 
-Currently, two official plugins are available:
+Here are some bullet points about this web site.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. This website is a kind of web site where one can search jobs and apply.
+
+2. User can add a job. and after that edit their added job.
+
+3. User Cans search a job in category wise in Home page
+
+4. Applied jobs information can only be seen by that specific user
+
+5. Applied job, My job pages Data are protected with jwt token.
+
+6. One User Can edit the data of only his added jobs.
+
+7. The Web site is fully responsive. etc.
+
