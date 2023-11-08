@@ -1,9 +1,10 @@
 import { useState, useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../providers/AuthProvider";
 import PageTitle from "../../Components/PageTitle";
+import LoginBanner from "./LoginBanner";
 
 // import AuthProvider, { AuthContext } from "../../providers/AuthProvider";
 // import Header from "../Home/Header/Header";
@@ -18,7 +19,7 @@ const Login = () => {
 //   const { signIn,googleSignIn } = useContext(AuthContext);
 
 const { signIn,googleSignIn,theme }=useContext(AuthContext);
- 
+
   const handleLogin = (e) => {
     e.preventDefault();
     let email = e.target.email.value;
@@ -57,7 +58,9 @@ const { signIn,googleSignIn,theme }=useContext(AuthContext);
       
       SuccessToast("Successfully logged in !");
 
-      navigate(location?.state ? location.state : '/');
+      
+      // <Navigate state={location.pathname} to={location?.state ? location.state : '/'}></Navigate>
+navigate(location?.state ? location.state : '/', { state: { from: location.pathname } });
     })
     .catch((error) => {
       console.error("this is ", error);
@@ -70,6 +73,7 @@ const { signIn,googleSignIn,theme }=useContext(AuthContext);
     <div  className="">
    <PageTitle title={"Login"}></PageTitle>
       <ToastContainer />
+      <LoginBanner/>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:block hidden lg:text-left h-full w-full  ">
@@ -115,14 +119,14 @@ const { signIn,googleSignIn,theme }=useContext(AuthContext);
                   {" "}
                   <p>
                     New to the web site?
-                    <span className="text-blue-600 font-bold underline">
+                    <span className="text-emerald-500 font-bold underline">
                       <Link to={"/register"}>Register </Link>
                     </span>
                   </p>
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-blue-600 btn-primary border-0 text-white">
+                <button className="btn bg-emerald-500 btn-primary border-0 text-white">
                   Login
                 </button>
                
@@ -132,7 +136,7 @@ const { signIn,googleSignIn,theme }=useContext(AuthContext);
                 </button> */}
             </form> 
             <div className="flex justify-center w-full">
-            <button onClick={handleGoogleSignin} className=" lg:w-[320px] w-[220px] btn mt-1 mb-5  bg-blue-600 btn-primary border-0 text-white">
+            <button onClick={handleGoogleSignin} className=" lg:w-[320px] w-[220px] btn mt-1 mb-5  bg-emerald-500 btn-primary border-0 text-white">
                   Log In With Google
                 </button>
 

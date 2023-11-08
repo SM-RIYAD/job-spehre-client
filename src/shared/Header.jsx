@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
@@ -6,24 +6,27 @@ import "./Header.css";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const { pathname } = useLocation();
+  console.log("this is from header",pathname)
+  const navigate =useNavigate()
   console.log("photo url", user?.photoURL);
   const handleLogout = () => {
     logOut()
       .then((result) => {
         console.log(result.user);
+        navigate("/home");
       })
       .catch((err) => console.log(err));
   };
 
   const navLinks = (
     <>
-      <li className={`${user ? "pt-10" : "pt-5"} `}>
+      <li className={`${user ? "pt-5" : "pt-5"} `}>
         <Link className={`${pathname === "/" ? "active-link" : ""}`} to="/">
           Home
         </Link>
       </li>
 
-      <li className={`${user ? "pt-10" : "pt-5"} `}>
+      <li className={`${user ? "pt-5" : "pt-5"} `}>
         <Link
           className={`${pathname === "/alljobs" ? "active-link" : ""}`}
           style={{ style: "" }}
@@ -33,7 +36,7 @@ const Header = () => {
         </Link>
       </li>
 
-      <li className={`${user ? "pt-10" : "pt-5"} `}>
+      <li className={`${user ? "pt-5" : "pt-5"} `}>
         <Link
           className={`${pathname === "/blogs" ? "active-link" : ""}`}
           to="/blogs"
@@ -42,7 +45,7 @@ const Header = () => {
         </Link>
       </li>
       {user?.displayName && (
-        <li className={`${user ? "pt-10" : "pt-5"} `}>
+        <li className={`${user ? "pt-5" : "pt-5"} `}>
           <Link
             className={`${pathname === "/myjobs" ? "active-link" : ""}`}
             to="/myjobs"
@@ -52,7 +55,7 @@ const Header = () => {
         </li>
       )}
         {user?.displayName && (
-        <li className={`${user ? "pt-10" : "pt-5"} `}>
+        <li className={`${user ? "pt-5" : "pt-5"} `}>
           <Link
             className={`${pathname === "/addajob" ? "active-link" : ""}`}
             to="/addajob"
@@ -62,7 +65,7 @@ const Header = () => {
         </li>
       )}
         {user?.displayName && (
-        <li className={`${user ? "pt-10" : "pt-5"} `}>
+        <li className={`${user ? "pt-5" : "pt-5"} `}>
           <Link
             className={`${pathname === "/appliedjobs" ? "active-link" : ""}`}
             to="/appliedjobs"
@@ -98,7 +101,7 @@ const Header = () => {
               <div className="w-12 rounded-full  tooltip"  data-tip={user?.displayName}   >
                 <img className="rounded-full" src={user?.photoURL} />
               </div>
-              <btn  onClick={handleLogout} className="border-0 btn btn-error btn-outline">
+              <btn  onClick={handleLogout} className={`border-0 ${pathname === "/" ? "" : "hidden"}  btn btn-error btn-outline`}>
             Logout
           </btn>
             </div>

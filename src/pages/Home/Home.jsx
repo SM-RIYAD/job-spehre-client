@@ -4,6 +4,7 @@ import Bannertwo from './HomeComponents/Banner/Bannertwo';
 import JobTab from './HomeComponents/JobTab';
 import PageTitle from '../../Components/PageTitle';
 import Resumesection from './HomeComponents/Resumesection';
+import Faq from './Faq';
 
 const Home = () => {
     return (
@@ -11,7 +12,9 @@ const Home = () => {
     <PageTitle title={"Home"}></PageTitle>
       <Banner></Banner>
         <JobTab/>
+        <Faq></Faq>
         <Resumesection/>
+      
         </div>
     );
 };

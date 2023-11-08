@@ -1,8 +1,9 @@
 import React from 'react';
 
-const AppliedJobsBanner = () => {
+const LoginBanner = () => {
     return (
-      <div className="pb-5 relative">
+        <div>
+             <div className="pb-5 relative">
       <div
         className="hero min-h-[350px] bg-cover relative"
         style={{
@@ -13,13 +14,13 @@ const AppliedJobsBanner = () => {
         <div className="hero-overlay absolute inset-0 bg-gradient-to-r from-cyan-500 to-emerald-500 opacity-80"></div>
         <div className="hero-content text-center text-neutral-content relative z-10">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">APPLIED JOBS</h1>
+            <h1 className="mb-5 text-5xl font-bold">Log in</h1>
           </div>
         </div>
       </div>
     </div>
-    
+        </div>
     );
 };
 
-export default AppliedJobsBanner;
+export default LoginBanner;

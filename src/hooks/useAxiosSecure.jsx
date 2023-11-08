@@ -9,6 +9,10 @@ const axiosSecure = axios.create({
     baseURL: 'https://job-sphere-server.vercel.app/',
     withCredentials: true
 });
+// const axiosSecure = axios.create({
+//     baseURL: 'http://localhost:5000/',
+//     withCredentials: true
+// });
 
 const useAxiosSecure = () => {
     

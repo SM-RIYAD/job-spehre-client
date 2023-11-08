@@ -53,17 +53,17 @@ const JobCards = ({ job }) => {
         <div className="lg:w-1/3 flex  flex-col justify-between">
       
          
-          <p className="text-gray-400 "> Apply before <span className="text-red-400">{ApplicationDeadline} </span>  </p>
+          <p className=" "> Apply before <span className="">{ApplicationDeadline} </span>  </p>
 
-          <p className="text-gray-400"> Applicants : {JobApplicantsNumber} </p>
-          <p className="text-gray-400 "> Posted By <span className="font-bold" > <i>{UserName} </i> </span>  on <span className="text-green-400">{JobPostingDate} </span></p>
+          <p className=""> Applicants : {JobApplicantsNumber} </p>
+          <p className=" "> Posted By <span className="font-bold" > <i>{UserName} </i> </span>  on <span className="">{JobPostingDate} </span></p>
          
         </div>
 
         <div className="lg:w-1/3  flex lg:flex-row  flex-col lg:items-end lg:justify-between">
 
             <div className="w-full h-full flex items-center">
-            <p className="text-gray-400"> $ {SalaryRange}</p>
+            <p className=""> $ {SalaryRange}</p>
 
             </div>
           <div> 

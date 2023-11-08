@@ -74,9 +74,29 @@ const Myjobs = () => {
       <div className=" max-w-6xl mx-auto">
       {loading? <div className="w-full flex justify-center">
             <span className="loading loading-spinner loading-xl"></span>
-          </div>:<div>
+          </div>:
+          <div>
+            
 
-<div className="lg:block hidden">
+
+
+               {jobstoshow.length===0&&(<div>
+                <div className=" w-full min-h-[400px] flex flex-col justify-center mt-24  items-center">
+                  {" "}
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3473/3473482.png"
+                    alt=""
+                   className="w-1/3"
+                  />{" "}
+                  <p className="text-2xl text-gray-300 font-bold my-10">No jobs found!</p>
+                </div>
+
+
+               </div> )
+               
+               
+               }
+          <div className="lg:block hidden">
   <div className="overflow-x-auto">
     <table className="table">
       <thead>
@@ -114,12 +134,16 @@ const Myjobs = () => {
       </tbody>
     </table>
   </div>
-</div>
-<div className=" lg:hidden  ">
+               </div>
+             <div className=" lg:hidden  ">
   {jobs.map((job, idx) => (
     <MyjobResponsiveTable key={idx} job={job} />
   ))}
-</div>
+                   </div>
+
+
+
+
 </div>} 
         
         

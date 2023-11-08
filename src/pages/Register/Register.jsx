@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../providers/AuthProvider";
 import PageTitle from "../../Components/PageTitle";
+import RegisterBanner from "./RegisterBanner";
 
 
 // import { AuthContext } from "../providers/AuthProvider";
@@ -66,6 +67,7 @@ const  { createUser, updateUser,logOut } =useContext(AuthContext)
     <div>
 <PageTitle title={"Register"} ></PageTitle>
       <ToastContainer />
+      <RegisterBanner></RegisterBanner>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left h-full w-full lg:block hidden  ">
@@ -131,14 +133,14 @@ const  { createUser, updateUser,logOut } =useContext(AuthContext)
                   {" "}
                   <p>
                     Have an account?
-                    <span className="text-blue-600 font-bold underline">
+                    <span className="text-emerald-500 font-bold underline">
                       <Link to={"/login"}>Log in </Link>
                     </span>
                   </p>
                 </label>
               </div>
               <div className="form-controls mt-6">
-                <button className="btn bg-blue-600 btn-primary border-0 text-white">
+                <button className="btn bg-emerald-500 btn-primary border-0 text-white">
                   Register
                 </button>
               </div>
