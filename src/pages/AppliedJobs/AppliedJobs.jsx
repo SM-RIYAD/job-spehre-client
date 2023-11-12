@@ -4,6 +4,8 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../providers/AuthProvider";
 import AppliedJobsBanner from "./AppliedJobsBanner";
 import Cookies from 'js-cookie';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link, useLocation } from "react-router-dom";
 import AppliedJobResponsivetable from "./AppliedJobResponsivetable";
 import { usePDF } from "react-to-pdf";
@@ -117,12 +119,13 @@ const AppliedJobs = () => {
     <div>
       <PageTitle title={"Applied Jobs"}></PageTitle>
       <AppliedJobsBanner></AppliedJobsBanner>
+      
       <div className="6xl mx-auto">
-        <div className="flex justify-center my-10">
+        <div className="flex flex-col md:flex-row lg:flex-row gap-5 justify-center my-10">
           <select
             value={selectedOption}
             onChange={handleSelectChange}
-            className="select select-bordered w-full max-w-xs"
+            className="select md:ms-5 md:max-w-[300px] max-w-[300px]  select-bordered w-full ms-2"
           >
             <option value="All Jobs">All Jobs</option>
             <option value="OnSite">On Site</option>
@@ -130,7 +133,7 @@ const AppliedJobs = () => {
             <option value="Part Time">Part Time</option>
             <option value="Hybrid">Hybrid</option>
           </select>
-          <button className="btn btn-primary" onClick={() => toPDF()}>
+          <button className="btn lg:mx-0 mx-5 max-w-[300px]  text-white border-none bg-emerald-500 btn-primary" onClick={() => toPDF()}>
             Download Summary
           </button>
         </div>
@@ -165,7 +168,7 @@ const AppliedJobs = () => {
                             <th>Job Posting Date</th>
                             <th>Application Deadline </th>
                             <th>Salary Range</th>
-                            <th>Action </th>
+                          
                           </tr>
                         </thead>
                         <tbody>
@@ -177,11 +180,7 @@ const AppliedJobs = () => {
                               <td>{job.JobPostingDate}</td>
                               <td>{job.ApplicationDeadline}</td>
                               <td>${job.SalaryRange}</td>
-                              <Link to={`/jobdetails/${job._id}`}>
-                                <button className="btn bg-green-600 text-white btn-xs">
-                                  details
-                                </button>
-                              </Link>
+                             
                             </tr>
                           ))}
                         </tbody>

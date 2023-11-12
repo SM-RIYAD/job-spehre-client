@@ -31,7 +31,7 @@ const JobTab = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <p className="text-center font-bold my-10 text-4xl">LATEST JOBS </p>
+      <p className="text-center font-bold my-10 text-emerald-500 text-4xl">LATEST JOBS </p>
       <Tabs>
         <TabList className="flex flex-wrap justify-center  text-emerald-500 font-bold">
           <Tab

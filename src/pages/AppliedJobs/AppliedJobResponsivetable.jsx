@@ -44,7 +44,7 @@ const AppliedJobResponsivetable = ({job}) => {
                 <p className="text-gray-500  text-end"> ${job.SalaryRange}</p>
               </div>
               
-              <div className="flex justify-start ">
+              {/* <div className="flex justify-start ">
               <Link to={`/jobdetails/${job._id}`}>
                 <button
              
@@ -53,7 +53,7 @@ const AppliedJobResponsivetable = ({job}) => {
                 Details
                 </button>
                 </Link>
-              </div>
+              </div> */}
             </div>
         </div>
       </div>

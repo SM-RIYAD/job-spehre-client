@@ -14,6 +14,7 @@ const JobCards = ({ job }) => {
     jobPhoto,
     JobTitle,
     UserName,
+    companyLogo,
     useremail,
     JobCategory,
     SalaryRange,
@@ -40,33 +41,46 @@ const JobCards = ({ job }) => {
     <div>
      
       <div className=" p-5 hover:shadow-xl hover:border hover:rounded hover:bg-blue-100 flex lg:flex-row lg:space-y-0 space-y-5 flex-col">
-        <div className="lg:w-1/3 lg:flex flex-col  ">
         
-          <p className="text-2xl"> {JobTitle}</p>
+      {/* <div className="lg:w-1/4 lg:flex flex-col  ">
+        
+<img className="object-cover h-[100px] w-[100px] " src={companyLogo} alt="" srcset="" />
+    
+         
+   
+       
+      </div> */}
+        <div className="lg:w-1/3 lg:flex   ">
+        <img className="object-cover h-[100px] w-[100px] " src={companyLogo} alt="" srcset="" />
+        <div className="lg:ms-2 flex-col flex">
+        <p className="text-2xl"> {JobTitle}</p>
           <button className="text-sm  h-[30px] text-purple-500 w-[80px] border-purple-500 border  rounded">
       
             {JobCategory}
           </button>
+        </div> 
+         
          
         </div>
 
-        <div className="lg:w-1/3 flex  flex-col justify-between">
+        <div className="lg:w-1/3 flex lg:ms-[70px]  flex-col">
       
          
           <p className=" "> Apply before <span className="">{ApplicationDeadline} </span>  </p>
 
-          <p className=""> Applicants : {JobApplicantsNumber} </p>
+         
           <p className=" "> Posted By <span className="font-bold" > <i>{UserName} </i> </span>  on <span className="">{JobPostingDate} </span></p>
          
         </div>
 
         <div className="lg:w-1/3  flex lg:flex-row  flex-col lg:items-end lg:justify-between">
 
-            <div className="w-full h-full flex items-center">
+            <div className="w-full h-full flex flex-col ">
             <p className=""> $ {SalaryRange}</p>
+            <p className=""> Applicants : {JobApplicantsNumber} </p>
 
             </div>
-          <div> 
+          <div className="flex "> 
             <Link to={`jobdetails/${_id}`}> 
             <button onClick={handleErrorToast} className="btn-success  btn my-3 btn-outline">
               {" "}

@@ -2,11 +2,11 @@ import React from 'react';
 
 const Faq = () => {
     return (
-        <div className='lg:max-w-6xl mx-auto my-32'>
+        <div className='lg:max-w-6xl mx-auto my-32 text-emerald-500'>
 
-        <h1 className='lg:text-4xl text-xl p-1 text-center font-bold my-10'>FREQUENTLY ASKED QUESTIONS</h1>
+        <h1 className='lg:text-4xl text-emerald-500 text-xl p-1 text-center font-bold my-10'>FREQUENTLY ASKED QUESTIONS</h1>
         <div className="join join-vertical w-full">
-<div className="collapse collapse-arrow join-item border border-green-500 "> 
+<div className="collapse collapse-arrow join-item border text-emerald-500  "> 
 <input type="radio"  name="my-accordion-4" checked="checked" /> 
 <div className="collapse-title text-xl font-medium">
 Is JobSphere free to use for job seekers?

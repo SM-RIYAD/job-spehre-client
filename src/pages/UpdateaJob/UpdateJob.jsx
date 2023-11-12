@@ -17,27 +17,30 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import PageTitle from '../../Components/PageTitle';
 const UpdateJob = () => {
     const { id } = useParams();
+    const [jobcategory,SetJobCategory]=useState({category:""});
    
     const axiosSecure = useAxiosSecure();
     const { user,  } = useContext(AuthContext);
     const [detailedjob,setDtailedjob]=useState({});
-    const [selectedOption, setSelectedOption] = useState("OnSite"); // Initial selected option
+    
+    // Initial selected option
     
   console.log("user in add product ", user);
-    
-
+ 
     useEffect(() => {
-        axiosSecure.get(`specificjob/${id}`).then((result) => {
-          setDtailedjob(result.data);
+     
+      axiosSecure.get(`specificjob/${id}`).then((result) => {
+        setDtailedjob(result.data);
+        SetJobCategory({category:result.data.JobCategory})
+          
         });
+     
       }, [axiosSecure,id]);
 
-    const handleSelectChange = (event) => {
-      setSelectedOption(event.target.value);
-    };
+   
       
 console.log("this job is for updating:",detailedjob);
-    const {
+    let {
         companyLogo,
     
         jobPhoto,
@@ -61,8 +64,28 @@ console.log("this job is for updating:",detailedjob);
         JobApplicantsNumber,
       } = detailedjob;
 
+          let cat= JobCategory;
 
 
+    
+
+
+
+
+
+
+
+
+
+
+
+      const handleSelectChange = (event) => {
+   
+    
+        SetJobCategory({category:event.target.value})
+      
+
+      };
 
 
     const handleUpdateProduct=(e)=>{
@@ -82,7 +105,7 @@ console.log("this job is for updating:",detailedjob);
         const Location=form.location.value;
         const useremail=user?.email;
      
-        const JobCategory=selectedOption;
+        const JobCategory=jobcategory.category;
        
        const  SalaryRange=form.salary.value;
        
@@ -169,15 +192,25 @@ console.log("this job is for updating:",detailedjob);
                   </label>
                   <select
                     className="input input-bordered"
-                    value={selectedOption}
-                    defaultValue={JobCategory}
+                    value={jobcategory?.category}
+                   
                     onChange={handleSelectChange}
-                  >
-                    <option value="On Site">On Site</option>
+                  > <option value="Hybrid">Hybrid</option>
+                       <option value="Part Time">Part Time</option>
                     <option value="Remote">Remote</option>
-                    <option value="Part Time">Part Time</option>
-                    <option value="Hybrid">Hybrid</option>
+                    <option value="On Site">On Site</option>
+                 
+                   
                   </select>
+                  {/* <input
+                   type="text"
+                    name="category"
+                    defaultValue={JobCategory}
+                    placeholder="eg. Hybrid, Part Time, Remote, On Site"
+                    className="input input-bordered"
+                    required
+                  />  */}
+
                 </div>
                
                 <div className="form-control ">
@@ -188,13 +221,13 @@ console.log("this job is for updating:",detailedjob);
                   </label>
 
                   <input
-                    type="photo"
+                   type="photo"
                     name="companylogo"
                     defaultValue={companyLogo}
                     placeholder="enter company logo url"
                     className="input input-bordered"
                     required
-                  />
+                  /> 
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -339,8 +372,8 @@ console.log("this job is for updating:",detailedjob);
               </div>
               <input
                 type="submit"
-                value="Add Job"
-                className="btn btn-block btn-primary"
+                value="Update Job"
+                className="btn btn-block text-white border-none bg-emerald-500"
               />
             </form>
           </div>

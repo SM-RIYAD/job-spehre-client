@@ -22,7 +22,7 @@ const Header = () => {
     <>
       <li className={`${user ? "pt-5" : "pt-5"} `}>
         <Link className={`${pathname === "/" ? "active-link" : ""}`} to="/">
-          Home
+          HOME
         </Link>
       </li>
 
@@ -32,7 +32,7 @@ const Header = () => {
           style={{ style: "" }}
           to="/alljobs"
         >
-          All Jobs
+        ALL JOBS
         </Link>
       </li>
 
@@ -41,7 +41,7 @@ const Header = () => {
           className={`${pathname === "/blogs" ? "active-link" : ""}`}
           to="/blogs"
         >
-          Blogs
+          BLOGS
         </Link>
       </li>
       {user?.displayName && (
@@ -50,7 +50,7 @@ const Header = () => {
             className={`${pathname === "/myjobs" ? "active-link" : ""}`}
             to="/myjobs"
           >
-            My jobs
+            MY JOBS
           </Link>
         </li>
       )}
@@ -60,7 +60,7 @@ const Header = () => {
             className={`${pathname === "/addajob" ? "active-link" : ""}`}
             to="/addajob"
           >
-            Add a job
+            ADD JOB
           </Link>
         </li>
       )}
@@ -70,7 +70,7 @@ const Header = () => {
             className={`${pathname === "/appliedjobs" ? "active-link" : ""}`}
             to="/appliedjobs"
           >
-            Applied jobs
+            APPLIED JOBS
           </Link>
         </li>
       )}
@@ -111,14 +111,14 @@ const Header = () => {
         className={`${pathname === "/login" ? "active-link" : ""}`}
         to="/login"
       >
-        <p className="border-0">Log in</p>
+        <p className="border-0  font-bold">Log in</p>
       </Link> }
       </li>
     </>
   );
   return (
     <div className="   ">
-      <div className="navbar  lg:max-w-6xl mx-auto   ">
+      <div className="navbar text-emerald-500 font-bold  lg:max-w-6xl mx-auto   ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

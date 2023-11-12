@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import JobdetailsBanner from "./jobdetailsBanner";
 import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../providers/AuthProvider";
 import PageTitle from "../../Components/PageTitle";
 const JobDetails = () => {
@@ -15,6 +17,8 @@ const JobDetails = () => {
     );
     return formattedDate.replace(/\//g, "-"); // Replace slashes with dashes (yy/mm/dd to yy-mm-dd)
   };
+  const SuccessToast = (successmsg) =>
+  toast.success(successmsg, { position: "bottom-center" });
   const { id } = useParams();
   const [detailedjob, setDtailedjob] = useState({});
   const axiosSecure = useAxiosSecure();
@@ -124,12 +128,13 @@ const JobDetails = () => {
     .then((response) => {
       console.log(response.data);
       if (response.data.insertedId) {
-        Swal.fire({
-          title: "Success!",
-          text: "Applied to the job Successfully",
-          icon: "success",
-          confirmButtonText: "Cool"
-        });
+        // Swal.fire({
+        //   title: "Success!",
+        //   text: "Applied to the job Successfully",
+        //   icon: "success",
+        //   confirmButtonText: "Cool"
+        // });
+        SuccessToast("Applied to the job Successfully  !");
       }
     })
     .catch((error) => {
@@ -139,12 +144,13 @@ const JobDetails = () => {
     axiosSecure.get(`updateapplicantnumber/${id}`).then((response) => {
       console.log(response.data);
       if ( response.data.modifiedCount > 0) {
-        Swal.fire({
-          title: "Success!",
-          text: "Successfully incremented job",
-          icon: "success",
-          confirmButtonText: "Cool"
-        });
+        // Swal.fire({
+        //   title: "Success!",
+        //   text: "Successfully incremented job",
+        //   icon: "success",
+        //   confirmButtonText: "Cool"
+        // });
+        SuccessToast("Successfully incremented job  !");
       }
     })
     .catch((error) => {
@@ -156,6 +162,7 @@ const JobDetails = () => {
     <div>
       <PageTitle title={"Job Details"}></PageTitle>
       <JobdetailsBanner JobTitle={JobTitle} jobPhoto={jobPhoto} />
+      <ToastContainer />
       <div className="max-w-6xl mx-auto">
         <div className="flex lg:flex-row flex-col">
           <div className="lg:w-2/3 p-5   lg:pe-20">
@@ -210,6 +217,7 @@ const JobDetails = () => {
 
                 <p className="text-gray-500"> ${SalaryRange}</p>
               </div>
+             
               <div className="flex justify-between ">
                 <p className="text-gray-500 "> Deadline:</p>
 
@@ -218,14 +226,32 @@ const JobDetails = () => {
                   {formatDate(ApplicationDeadline)}
                 </p>
               </div>
+              <div className="flex justify-between ">
+                <p className="text-gray-500 "> Posted By:</p>
+
+                <p className="text-gray-500">
+                  {" "}
+                  {UserName}
+                </p>
+              </div>
+              <div className="flex justify-between ">
+                <p className="text-gray-500 "> Company:</p>
+
+                <p className="text-gray-500">
+                  {" "}
+                  {CompanyName}
+                </p>
+              </div>
+             
               <div className="flex justify-start ">
                 <button
                   onClick={handleApplyjob}
-                  className="btn btn-primary border-none text-white  "
+                  className="btn btn-primary  btn-block text-white border-none bg-emerald-500  "
                 >
                   Apply
                 </button>
                 <dialog id="my_modal_1" className="modal">
+                <ToastContainer />
                   <div className="modal-box">
                   <form method="dialog">
       {/* if there is a button in form, it will close the modal */}
@@ -277,12 +303,13 @@ const JobDetails = () => {
                     placeholder="enter your resume url"
                     className="input input-bordered"
                     required
-                  />  <input
+                  /> 
+               <input
                   type="submit"
             
                   value="Submit"
                   className="btn bg-green-500 mt-5 text-white border-none w-full  btn-primary"
-                /><div className="modal-action">
+                /> <div className="modal-action">
                
                 </div>
               

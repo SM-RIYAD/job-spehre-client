@@ -1,12 +1,14 @@
 import React from 'react';
 import PageTitle from '../../Components/PageTitle';
+import Blogbanner from './Blogbanner';
 
 const Blogs = () => {
     return (
         <div>
+          <Blogbanner></Blogbanner>
             <PageTitle title={"Blogs"}></PageTitle>
             <div className='max-w-6xl p-2 flex flex-col gap-5 mx-auto spacey-y-5'>
-            <div className="card w-full bg-base-100 shadow-xl image-full">
+            <div className="card w-full bg-gradient-to-r from-cyan-500 to-emerald-500 shadow-xl image-full">
 
   <div className="card-body">
     <h2 className="card-title">What is an access token and refresh token?</h2>
@@ -18,7 +20,7 @@ On the other hand, refresh token is a long-lived credential that can be used to 
   </div>
 </div>
 
-<div className="card w-full bg-base-100 shadow-xl image-full">
+<div className="card w-full bg-gradient-to-r from-cyan-500 to-emerald-500 shadow-xl image-full">
 
   <div className="card-body">
     <h2 className="card-title">How do they work?</h2>
@@ -30,7 +32,7 @@ Refresh Token: Alongside the access token, the server may provide a refresh toke
   </div>
 </div>
 
-<div className="card w-full bg-base-100 shadow-xl image-full">
+<div className="card w-full bg-gradient-to-r from-cyan-500 to-emerald-500 shadow-xl image-full">
 
   <div className="card-body">
     <h2 className="card-title">Where to Store Them on the Client Side?</h2>
@@ -42,7 +44,7 @@ Refresh Token: Refresh tokens should be stored securely, ideally on a secure ser
   </div>
 </div>
 
-<div className="card w-full bg-base-100 shadow-xl image-full">
+<div className="card w-full bg-gradient-to-r from-cyan-500 to-emerald-500 shadow-xl image-full">
 
   <div className="card-body">
     <h2 className="card-title">What is express js and NestJS?</h2>
@@ -55,7 +57,7 @@ NestJS is a progressive and versatile Node.js framework for building efficient, 
    
   </div>
 </div>
-<div className="card w-full bg-base-100 shadow-xl image-full">
+<div className="card w-full bg-gradient-to-r from-cyan-500 to-emerald-500 shadow-xl image-full">
  
   <div className="card-body">
     <h2 className="card-title">About My Code</h2>

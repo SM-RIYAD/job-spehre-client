@@ -43,7 +43,7 @@ const Myjobs = () => {
       if (result.isConfirmed) {
 
 
-          fetch(`http://localhost:5000/deletejob/${id}`, {
+          fetch(`https://job-sphere-server.vercel.app/deletejob/${id}`, {
               method: 'DELETE'
           })
               .then(res => res.json())

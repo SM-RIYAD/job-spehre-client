@@ -312,7 +312,7 @@ console.log("user in add product ", user);
               <input
                 type="submit"
                 value="Add Job"
-                className="btn btn-block btn-primary"
+                className="btn btn-block text-white border-none bg-emerald-500 "
               />
             </form>
           </div>
