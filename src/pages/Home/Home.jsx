@@ -11,6 +11,7 @@ const Home = () => {
         <div >
     <PageTitle title={"Home"}></PageTitle>
       <Banner></Banner>
+   
         <JobTab/>
         <Faq></Faq>
         <Resumesection/>

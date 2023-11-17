@@ -5,7 +5,7 @@ import { getAuth, updateProfile } from "firebase/auth";
 
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../firebase/firebase.config';
-import useAxiosSecure from '../hooks/useAxiosSecure';
+
 import axios from 'axios';
 
 export const AuthContext = createContext(null);
@@ -14,7 +14,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
     const [theme,setTheme]=useState("light");
-    const axiosSecure = useAxiosSecure();
+
     const [loading, setLoading] = useState(true);
     const createUser = (email, password) => {
         setLoading(true);
@@ -66,13 +66,17 @@ return  signInWithPopup(auth,provider)
             setLoading(false);
               // if user exists then issue a token
               if (currentUser) {
-                axiosSecure.post('/jwt', loggedUser,  )
+                axios.post('https://job-sphere-server.vercel.app/jwt', loggedUser,{
+                    withCredentials: true
+                }  )
                     .then(res => {
                         console.log('token response', res.data);
                     })
             }
             else {
-                axiosSecure.post('/logout', loggedUser, )
+                axios.post('https://job-sphere-server.vercel.app/logout', loggedUser, {
+                    withCredentials: true
+                })
                     .then(res => {
                         console.log(res.data);
                     })
@@ -83,7 +87,7 @@ return  signInWithPopup(auth,provider)
         return () => {
             unSubscribe();
         }
-    }, []);
+    }, [ ]);
   
     return (
         <AuthContext.Provider value={authInfo}>
