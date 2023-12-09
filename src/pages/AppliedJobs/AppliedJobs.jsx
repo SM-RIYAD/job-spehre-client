@@ -36,18 +36,7 @@ const AppliedJobs = () => {
 
   
 
-    // const fetchdata= ()=>{
-    //   setloading(true);
-    //   axiosSecure.get(url).then((res) => {
-    //     setJobs(res?.data);
-    //     setJobstoshow(res?.data);
-    //     setloading(false);
-       
-    //   });
-
-      
-    // }
-
+ 
   useEffect(() => {
 
     setloading(true);

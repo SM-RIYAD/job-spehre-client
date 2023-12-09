@@ -15,6 +15,7 @@ const AlljobBanner = () => {
       <div className="hero-content text-center text-neutral-content relative z-10">
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">ALL JOBS</h1>
+          
         </div>
       </div>
     </div>

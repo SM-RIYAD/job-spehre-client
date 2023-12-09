@@ -1,4 +1,4 @@
-<h1>ElectroSphere </h>
+<h1>Job Sphere </h>
 Live website link : "https://job-sphere.web.app"
 
 About Job Sphere :
@@ -18,4 +18,7 @@ Here are some bullet points about this web site.
 6. One User Can edit the data of only his added jobs.
 
 7. The Web site is fully responsive. etc.
-
+   
+  <h3> Technologies Used </h3> 
+Reactjs,nodejs,express js,mongodb,
+Tailwind,daisiui,html,css,firebase,jwt
